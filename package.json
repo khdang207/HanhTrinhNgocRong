@@ -1,0 +1,1 @@
+{"devDependencies":{"typescript":"^5.4.0","vite":"^5.2.0"},"name":"dragon-quest-online","private":true,"scripts":{"build":"tsc && vite build","dev":"vite","preview":"vite preview"},"type":"module","version":"0.1.0"}
