@@ -3,6 +3,7 @@ import type { Input } from '../core/Input.js';
 import type { Screen } from './Screen.js';
 import { CreateCharacterScreen } from './CreateCharacterScreen.js';
 import { GalleryScreen } from './GalleryScreen.js';
+import { TopDownPlayScreen } from './TopDownPlayScreen.js';
 
 // Màn hình tiêu đề
 export class TitleScreen implements Screen {
@@ -14,6 +15,10 @@ export class TitleScreen implements Screen {
     this.thoiGian += dt;
     if (input.isPressed('g')) {
       this.game.doiManHinh(new GalleryScreen(this.game));
+      return;
+    }
+    if (input.isPressed('t')) {
+      this.game.doiManHinh(new TopDownPlayScreen(this.game));
       return;
     }
     if (input.isPressed('enter') || input.mouseClicked) {
@@ -40,11 +45,12 @@ export class TitleScreen implements Screen {
     ctx.font = '16px monospace';
     ctx.fillStyle = '#9df09d';
     if (Math.floor(this.thoiGian * 2) % 2 === 0) {
-      ctx.fillText('Nhấn Enter để bắt đầu', w / 2, h / 2 + 40);
+      ctx.fillText('Nhấn Enter để bắt đầu (side-view)', w / 2, h / 2 + 40);
     }
     ctx.fillStyle = '#7dd3fc';
     ctx.font = '14px monospace';
-    ctx.fillText('Nhấn G để xem Gallery sprite', w / 2, h / 2 + 65);
+    ctx.fillText('Nhấn T để chơi Hero Adventure top-down kiểu Zelda', w / 2, h / 2 + 65);
+    ctx.fillText('Nhấn G để xem Gallery sprite', w / 2, h / 2 + 85);
     ctx.fillStyle = '#888888';
     ctx.font = '12px monospace';
     ctx.fillText('Fan game phi thương mại - chạy offline', w / 2, h - 30);
